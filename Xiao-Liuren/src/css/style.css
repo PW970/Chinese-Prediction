@@ -1,0 +1,77 @@
+:root {
+    --bg-paper: #f4f1ea;    /* 宣纸色 */
+    --ink-black: #1a1a1a;   /* 墨色 */
+    --cinnabar: #c0392b;    /* 朱砂红 */
+    --border-gold: #d4af37; /* 淡淡的描金 */
+}
+
+body {
+    background-color: var(--bg-paper);
+    color: var(--ink-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+}
+
+.card {
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 3rem;
+    max-width: 400px;
+    width: 100%;
+    background: white;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.03);
+    position: relative;
+    text-align: center;
+}
+
+/* 装饰线条 */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    pointer-events: none;
+}
+
+h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.6rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.result-box {
+    margin-top: 2rem;
+    min-height: 150px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.result-box.active {
+    opacity: 1;
+}
+
+.hex-name {
+    font-size: 3rem;
+    color: var(--cinnabar);
+    margin-bottom: 1rem;
+    writing-mode: vertical-rl; /* 竖排文字增加高级感 */
+    display: inline-block;
+}
+
+.btn-cast {
+    background: var(--ink-black);
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    letter-spacing: 0.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cast:hover {
+    letter-spacing: 0.5rem; /* 悬停时字间距拉开的动效 */
+}
