@@ -1,0 +1,81 @@
+:root {
+  --bg: #ead7af;
+  --panel: rgba(255, 251, 243, 0.86);
+  --ink: #1f1a17;
+  --accent: #912c21;
+  --line: rgba(80, 53, 28, 0.14);
+  --shadow: 0 20px 60px rgba(67, 41, 20, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "STSong", "Songti SC", "Noto Serif SC", serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, #ddb774 0%, #f8efdb 45%, #d7a363 100%);
+}
+
+.home {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.hero,
+.module-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(31, 26, 23, 0.65);
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.module-card {
+  padding: 18px;
+}
+
+.module-card a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #fff8ef;
+  background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .module-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .home {
+    padding: 16px;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+}

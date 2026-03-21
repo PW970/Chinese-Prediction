@@ -1,4 +1,17 @@
-import { getHourIndex, getShiChenName } from '../core/calculator.js';
+const SHI_CHEN = [
+  { name: '子时', index: 1 },
+  { name: '丑时', index: 2 },
+  { name: '寅时', index: 3 },
+  { name: '卯时', index: 4 },
+  { name: '辰时', index: 5 },
+  { name: '巳时', index: 6 },
+  { name: '午时', index: 7 },
+  { name: '未时', index: 8 },
+  { name: '申时', index: 9 },
+  { name: '酉时', index: 10 },
+  { name: '戌时', index: 11 },
+  { name: '亥时', index: 12 }
+];
 
 const LUNAR_MONTH_MAP = {
   正月: 1,
@@ -21,6 +34,22 @@ const lunarFormatter = new Intl.DateTimeFormat('zh-CN-u-ca-chinese', {
   day: 'numeric'
 });
 
+function getHourIndex(hour) {
+  if (!Number.isInteger(hour) || hour < 0 || hour > 23) {
+    throw new Error('hour 必须是 0 到 23 之间的整数');
+  }
+
+  if (hour === 23 || hour === 0) {
+    return 1;
+  }
+
+  return Math.floor((hour + 1) / 2) + 1;
+}
+
+function getShiChenName(hour) {
+  return SHI_CHEN.find((item) => item.index === getHourIndex(hour))?.name ?? '';
+}
+
 function getLunarParts(date) {
   if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
     throw new Error('请输入有效的日期');
@@ -31,7 +60,6 @@ function getLunarParts(date) {
   const dayLabel = parts.find((part) => part.type === 'day')?.value;
   const yearName = parts.find((part) => part.type === 'yearName')?.value;
   const relatedYear = parts.find((part) => part.type === 'relatedYear')?.value;
-
   const isLeapMonth = monthLabel?.startsWith('闰') ?? false;
   const normalizedMonthLabel = monthLabel?.replace(/^闰/, '');
   const month = normalizedMonthLabel ? LUNAR_MONTH_MAP[normalizedMonthLabel] : undefined;
@@ -45,7 +73,6 @@ function getLunarParts(date) {
     month,
     day,
     monthLabel,
-    dayLabel: `${day}日`,
     yearName,
     relatedYear,
     isLeapMonth
@@ -73,4 +100,9 @@ function getLunarData(date = new Date()) {
   };
 }
 
-export { getLunarData, getLunarParts };
+function toLocalInputValue(date = new Date()) {
+  const pad = (value) => String(value).padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+export { SHI_CHEN, getHourIndex, getLunarData, getShiChenName, toLocalInputValue };

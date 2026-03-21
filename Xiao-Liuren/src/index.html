@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Digital Dao | 小六壬</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小六壬</title>
+  <link rel="stylesheet" href="../../assets/module.css">
 </head>
 <body>
-
-<div class="card">
-    <h1>小六壬速测</h1>
-
-    <button id="castBtn" class="btn-cast">起卦</button>
-
-    <div id="resultArea" class="result-box">
-        <div class="hex-name" id="hexName"></div>
-        <p class="hex-meaning" id="hexMeaning"></p>
-        <p class="hex-poem" id="hexPoem"></p>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <p class="eyebrow">Chinese Prediction</p>
+        <h1>小六壬</h1>
+      </div>
+      <a class="home-link" href="../../index.html">返回主页面</a>
     </div>
-</div>
 
-<script type="module" src="src/ui-main.js"></script>
+    <section class="panel">
+      <p>本页面只负责小六壬模块，不再混放其他术数功能。</p>
+      <label class="field" for="datetimeInput">
+        <span>测算时间</span>
+        <input id="datetimeInput" type="datetime-local">
+      </label>
+      <div class="actions">
+        <button id="castBtn" type="button">起卦</button>
+        <button id="nowBtn" type="button">使用当前时间</button>
+      </div>
+      <section id="resultArea" class="result" aria-live="polite"></section>
+    </section>
+  </main>
+
+  <script type="module" src="./ui-main.js"></script>
 </body>
 </html>

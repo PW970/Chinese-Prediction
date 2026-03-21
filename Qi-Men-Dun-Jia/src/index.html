@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奇门遁甲</title>
+  <link rel="stylesheet" href="../../assets/module.css">
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div><p class="eyebrow">Chinese Prediction</p><h1>奇门遁甲</h1></div>
+      <a class="home-link" href="../../index.html">返回主页面</a>
+    </div>
+    <section class="panel">
+      <p>时家奇门基础九宫盘页面。</p>
+      <label class="field" for="datetimeInput"><span>排盘时间</span><input id="datetimeInput" type="datetime-local"></label>
+      <div class="actions"><button id="castBtn" type="button">排盘</button></div>
+      <section id="result" class="result"></section>
+      <section id="grid" class="grid grid-3"></section>
+    </section>
+  </main>
+  <script type="module" src="./ui-main.js"></script>
+</body>
+</html>
